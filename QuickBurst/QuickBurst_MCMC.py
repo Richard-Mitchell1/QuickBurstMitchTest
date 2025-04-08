@@ -2030,7 +2030,7 @@ def noise_jump(n_chain, max_n_wavelet, max_n_glitch, pta, FPI, QB_logl, QB_Info,
             #copy two sets of samples for intrinsic noise
             x1 = np.copy(de_history[j,de_indices[0],all_noiseparam_idxs])
             x2 = np.copy(de_history[j,de_indices[1],all_noiseparam_idxs])
-            print("x1: ",x1)
+
             new_point = np.copy(samples_current)
 
             #for 10% of DE jumps, do a big DE jump
@@ -2164,8 +2164,8 @@ def noise_jump(n_chain, max_n_wavelet, max_n_glitch, pta, FPI, QB_logl, QB_Info,
 def do_pt_swap(n_chain, max_n_wavelet, max_n_glitch, pta, FPI, QB_logl, QB_Info, samples, i, betas, a_yes, a_no, swap_record, vary_white_noise, num_noise_params, log_likelihood, PT_hist, PT_hist_idx):
     #set up map to help keep track of swaps
     swap_map = list(range(n_chain))
-    #get log_Ls from all the chains
 
+    #get log_Ls from all the chains
     log_Ls = []
     for j in range(n_chain):
         log_Ls.append(log_likelihood[j,i])
