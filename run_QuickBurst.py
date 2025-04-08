@@ -32,13 +32,16 @@ import re
 #style
 import cProfile
 
+import sys
+sys.path.append('/home/mitch/QuickBurstMitchTest/QuickBurst')
+print(sys.path)
 
 from QuickBurst import QuickBurst_MCMC
 
-with open("/home/user/path_to/.../data.pkl", 'rb') as f:
+with open("/home/mitch/QuickBurstMitchTest/15_year_data/psrs_trimmed_SNR99p.pkl", 'rb') as f:
     psrs = pickle.load(f)
 
-noise_file = "/home/user/path_to.../noise_file.json"
+noise_file = "/home/mitch/QuickBurstMitchTest/15_year_data/v1p1_all_dict.json"
 
 with open(noise_file, 'r') as h:
     noise_params = json.load(h)
@@ -79,7 +82,7 @@ prior_draw_prob = 0.1
 thinning = 10000
 
 T_max = 4 #2
-n_chain = 5 #3
+n_chain = 3 #3
 
 #Prior bounds on shape params
 tau_min = 0.2
@@ -88,12 +91,12 @@ f_max = 1e-7
 f_min = 3.5e-9 #1e-8
 
 #Load in tau scan proposal files
-ts_file = "/home/user/.../path_to/GW_signal_wavelet_tau_scan.pkl"
-glitch_ts_file = "/home/user/.../path_to/noise_transient_tau_scan.pkl"
+ts_file = "/home/mitch/QuickBurstMitchTest/15_year_data/wavelet_tau_scan_SNR99p.pkl"
+glitch_ts_file = "/home/mitch/QuickBurstMitchTest/15_year_data/glitch_tau_scan_SNR99p.pkl"
 
-filepath = "/home/user/.../save_dir/"
+filepath = "/home/mitch/QuickBurstMitchTest/15_year_data/qb/"
 os.makedirs(filepath, exist_ok = True)
-savepath = filepath + "some_file_name" #NOTE: DO NOT ADD FILE EXTENSION
+savepath = filepath + "happy" #NOTE: DO NOT ADD FILE EXTENSION
 
 samples, acc_fraction, swap_record, rj_record, ptas, log_likelihood, betas, PT_acc = QuickBurst_MCMC.run_qb(N_slow, T_max, n_chain, psrs,
                                                                     max_n_wavelet=3,
