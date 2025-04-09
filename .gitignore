@@ -3,3 +3,4 @@ data/
 results/
 *.out
 *.lprof
+15_year_data/psrs_trimmed_SNR99p.pkl
