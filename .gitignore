@@ -4,3 +4,4 @@ results/
 *.out
 *.lprof
 15_year_data/psrs_trimmed_SNR99p.pkl
+15_year_data/J1843-1113.pkl
